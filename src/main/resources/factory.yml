@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: Swagger Fabrikant
+  version: 1.0.0
+  contact: { }
+servers:
+  - url: http://localhost:8082
+paths:
+  /order/cars:
+    post:
+      summary: Order cars
+      description: ''
+      parameters: [ ]
+      operationId: orderCarsBulk
+      tags:
+        - "order"
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderCarsResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCarsRequest'
+  /order/laptops:
+    post:
+      summary: Order laptops
+      description: ''
+      parameters: [ ]
+      operationId: orderLaptopsBulk
+      tags:
+        - "order"
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderLaptopsResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderLaptopsRequest'
+  /order/mobiles:
+    post:
+      summary: Order mobiles
+      description: ''
+      parameters: [ ]
+      operationId: orderMobilesBulk
+      tags:
+        - "order"
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderMobilesResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderMobilesRequest'
+  /order/accessories:
+    post:
+      summary: Order accessories
+      description: ''
+      parameters: [ ]
+      operationId: orderAccessoriesBulk
+      tags:
+        - "order"
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderAccessoriesResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderAccessoriesRequest'
+components:
+  schemas:
+    OrderCarsRequest:
+      type: "object"
+      properties:
+        amountOfCars:
+          type: "integer"
+          format: "int64"
+          minimum: 1
+    OrderCarsResponse:
+      type: "object"
+      properties:
+        cars:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Car"
+    Car:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        price:
+          type: "number"
+          format: "double"
+    OrderLaptopsRequest:
+      type: "object"
+      properties:
+        amountOfLaptops:
+          type: "integer"
+          format: "int64"
+          minimum: 1
+    OrderLaptopsResponse:
+      type: "object"
+      properties:
+        Laptops:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Laptop"
+    Laptop:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        price:
+          type: "number"
+          format: "double"
+    OrderMobilesRequest:
+      type: "object"
+      properties:
+        amountOfMobiles:
+          type: "integer"
+          format: "int64"
+          minimum: 1
+    OrderMobilesResponse:
+      type: "object"
+      properties:
+        Mobiles:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Mobile"
+    Mobile:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        price:
+          type: "number"
+          format: "double"
+    OrderAccessoriesRequest:
+      type: "object"
+      properties:
+        amountOfAccessories:
+          type: "integer"
+          format: "int64"
+          minimum: 1
+    OrderAccessoriesResponse:
+      type: "object"
+      properties:
+        Accessories:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Accessory"
+    Accessory:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        price:
+          type: "number"
+          format: "double"
